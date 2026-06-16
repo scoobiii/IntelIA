@@ -1,0 +1,466 @@
+{
+  "collections": [
+    {
+      "path": "employees",
+      "description": "Lista de colaboradores cadastrados na empresa",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Identificador do colaborador",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Nome completo",
+          "required": true
+        },
+        {
+          "name": "registrationId",
+          "type": "string",
+          "description": "PIS/Pasep de registro",
+          "required": true
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "description": "Cargo ou função",
+          "required": true
+        },
+        {
+          "name": "contractHoursPerMonth",
+          "type": "number",
+          "description": "Horas contratuais mensais",
+          "required": true
+        },
+        {
+          "name": "baseSalary",
+          "type": "number",
+          "description": "Salário bruto base",
+          "required": true
+        },
+        {
+          "name": "extraHoursBalance",
+          "type": "number",
+          "description": "Saldo acumulado de horas extras",
+          "required": true
+        },
+        {
+          "name": "hourlyRate",
+          "type": "number",
+          "description": "Valor pago por hora normal",
+          "required": true
+        },
+        {
+          "name": "avatarColor",
+          "type": "string",
+          "description": "Cor de destaque do avatar do funcionário",
+          "required": true
+        },
+        {
+          "name": "joinedDate",
+          "type": "string",
+          "description": "Data de admissão",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "clock_ins",
+      "description": "Registros individuais de ponto eletrônico",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Slug ou uuid identificador do ponto",
+          "required": true
+        },
+        {
+          "name": "employeeId",
+          "type": "string",
+          "description": "Identificador do Employee associado",
+          "required": true
+        },
+        {
+          "name": "date",
+          "type": "string",
+          "description": "Data da marcação (YYYY-MM-DD)",
+          "required": true
+        },
+        {
+          "name": "time",
+          "type": "string",
+          "description": "Horário da marcação (HH:MM)",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Tipo: entrada, saida_alm, volta_alm, saida",
+          "required": true
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "description": "Origem: manual, ocr_slip, real_time_upload, restaurant_infer, geofence_simulation",
+          "required": true
+        },
+        {
+          "name": "nsr",
+          "type": "string",
+          "description": "Número Sequencial de Registro (MTP 671)",
+          "required": false
+        },
+        {
+          "name": "companyName",
+          "type": "string",
+          "description": "Razão social cadastrada nos comprovantes",
+          "required": false
+        },
+        {
+          "name": "cnpj",
+          "type": "string",
+          "description": "CNPJ associado",
+          "required": false
+        },
+        {
+          "name": "latitude",
+          "type": "number",
+          "description": "Latitude GPS no momento do ponto",
+          "required": false
+        },
+        {
+          "name": "longitude",
+          "type": "number",
+          "description": "Longitude GPS no momento do ponto",
+          "required": false
+        },
+        {
+          "name": "isCompliant",
+          "type": "boolean",
+          "description": "Status de conformidade do ponto",
+          "required": true
+        },
+        {
+          "name": "remarks",
+          "type": "string",
+          "description": "Anotações extras e justificativas",
+          "required": false
+        }
+      ]
+    },
+    {
+      "path": "non_conformities",
+      "description": "Suspeitas ou violações registradas na folha",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "ID único",
+          "required": true
+        },
+        {
+          "name": "employeeId",
+          "type": "string",
+          "description": "ID do colaborador com desvio",
+          "required": true
+        },
+        {
+          "name": "date",
+          "type": "string",
+          "description": "Data da ocorrência (YYYY-MM-DD)",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Tipo de inconformidade detectada",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Texto descritivo do ocorrido",
+          "required": true
+        },
+        {
+          "name": "severity",
+          "type": "string",
+          "description": "Severidade: low, medium, high",
+          "required": true
+        },
+        {
+          "name": "resolved",
+          "type": "boolean",
+          "description": "Indicação se a gerência corrigiu",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "holerite_summaries",
+      "description": "Sumarizações de pagamentos e saldos via upload de holerites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "ID único",
+          "required": true
+        },
+        {
+          "name": "employeeId",
+          "type": "string",
+          "description": "Colaborador correspondente",
+          "required": true
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "description": "Mês/Ano de referência (MM/YYYY)",
+          "required": true
+        },
+        {
+          "name": "baseSalary",
+          "type": "number",
+          "description": "Salário contratual bruto",
+          "required": true
+        },
+        {
+          "name": "grossSalary",
+          "type": "number",
+          "description": "Total bruto computado",
+          "required": true
+        },
+        {
+          "name": "extraHoursPaid",
+          "type": "number",
+          "description": "Quantidade de horas extras pagas",
+          "required": true
+        },
+        {
+          "name": "extraHoursValue",
+          "type": "number",
+          "description": "Valor monetizado das horas extras",
+          "required": true
+        },
+        {
+          "name": "totalDiscounts",
+          "type": "number",
+          "description": "Descontos de INSS/IRRF ou faltas",
+          "required": true
+        },
+        {
+          "name": "netSalary",
+          "type": "number",
+          "description": "Cálculo líquido final depositado",
+          "required": true
+        },
+        {
+          "name": "extractedAt",
+          "type": "string",
+          "description": "Timestamp de extração",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "users_profiles",
+      "description": "Perfis de usuários com credenciais de login e respectivas funções",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "ID exclusivo da conta",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "description": "E-mail de login do usuário",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Nome completo correspondente",
+          "required": true
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "description": "Senha de login do usuário",
+          "required": true
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "description": "Papel do usuário: colaborador ou gestor_rh",
+          "required": true
+        },
+        {
+          "name": "employeeId",
+          "type": "string",
+          "description": "ID do colaborador correspondente (se colaborador)",
+          "required": false
+        },
+        {
+          "name": "createdAt",
+          "type": "string",
+          "description": "Data de criação do perfil",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "candidates",
+      "description": "Candidatos inscritos no processo seletivo da Odontoprev",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Identificador único do candidato",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Nome completo",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "description": "E-mail de contato",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "Telefone de contato",
+          "required": true
+        },
+        {
+          "name": "appliedVacancy",
+          "type": "string",
+          "description": "Cargo desejado",
+          "required": true
+        },
+        {
+          "name": "step",
+          "type": "string",
+          "description": "Fase atual (1: Cadastro, 2: Bate-papo RH, 3: Liderança, 4: Contratação)",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "description": "Mini-experiência profissional",
+          "required": true
+        },
+        {
+          "name": "techSkills",
+          "type": "string",
+          "description": "Habilidades técnicas declaradas (GIT, Jira, Oracle, etc.)",
+          "required": true
+        },
+        {
+          "name": "appliedDate",
+          "type": "string",
+          "description": "Data da candidatura",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "jira_tasks",
+      "description": "Quadro Kanban Jira dos Analistas Backoffice para melhorias de sistemas",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Referência ou código Jira, ex: ODP-101",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Título resumo da tarefa",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Requisitos de integração",
+          "required": true
+        },
+        {
+          "name": "systemDomain",
+          "type": "string",
+          "description": "Dificuldades ou Módulos (Folha, Jurídico, Tributário, etc)",
+          "required": true
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "description": "Crítica, Alta, Média, Baixa",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Backlog, To Do, In Progress, Done",
+          "required": true
+        },
+        {
+          "name": "assignee",
+          "type": "string",
+          "description": "Desenvolvedor responsável",
+          "required": true
+        }
+      ]
+    },
+    {
+      "path": "employee_trainings",
+      "description": "Controle de capacitações e certificações internas exigidas por compliance",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "ID exclusivo da trilha",
+          "required": true
+        },
+        {
+          "name": "employeeId",
+          "type": "string",
+          "description": "Vinculo do colaborador",
+          "required": true
+        },
+        {
+          "name": "courseName",
+          "type": "string",
+          "description": "Nome da capacitação",
+          "required": true
+        },
+        {
+          "name": "progress",
+          "type": "number",
+          "description": "Percentual de completude (0 a 100)",
+          "required": true
+        },
+        {
+          "name": "completed",
+          "type": "boolean",
+          "description": "Status se finalizou",
+          "required": true
+        },
+        {
+          "name": "lastActivity",
+          "type": "string",
+          "description": "Data da última interação",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

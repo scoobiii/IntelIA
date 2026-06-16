@@ -1,0 +1,10 @@
+{
+  "name": "Calendário de Ponto de Funcionários",
+  "description": "Organizador central de ponto mensal CLT (Portaria 671), horas extras, painel de seleção com contratação automática, esteira técnica Jira de Backoffice (LG, Benner, Mastersaf) e treinamentos de capacitação corporativa.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
